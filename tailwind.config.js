@@ -4,9 +4,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+      },
+    },
   },
-  plugins: [require('daisyui'),],
+  plugins: [require('daisyui')],
   daisyui: {
     themes: ["emerald", "synthwave"],
   },

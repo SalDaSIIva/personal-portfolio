@@ -1,0 +1,126 @@
+/* Keyframes for the animated gradient */
+@keyframes gradient {
+    0% {
+        background-position: 14% 0%;
+    }
+
+    50% {
+        background-position: 87% 100%;
+    }
+
+    100% {
+        background-position: 14% 0%;
+    }
+}
+
+/* Keyframes for the animating clip-path using % instead of px */
+@keyframes border {
+    0% {
+        clip-path: polygon(0% 100%,
+                3% 100%,
+                3% 10%,
+                97% 10%,
+                97% 90%,
+                3% 90%,
+                3% 100%,
+                100% 100%,
+                100% 0%,
+                0% 0%
+            );
+    }
+
+    25% {
+        clip-path: polygon(0% 100%,
+                3% 100%,
+                3% 10%,
+                97% 10%,
+                97% 90%,
+                97% 90%,
+                97% 100%,
+                100% 100%,
+                100% 0%,
+                0% 0%
+            );
+    }
+
+    50% {
+        clip-path: polygon(0% 100%,
+                3% 100%,
+                3% 10%,
+                97% 10%,
+                97% 10%,
+                97% 10%,
+                97% 10%,
+                97% 10%,
+                100% 0%,
+                0% 0%);
+    }
+
+    75% {
+        clip-path: polygon(0% 100%,
+                3% 100%,
+                3% 10%,
+                3% 10%,
+                3% 10%,
+                3% 10%,
+                3% 10%,
+                3% 10%,
+                3% 0%,
+                0% 0%);
+    }
+
+    100% {
+        clip-path: polygon(0% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                3% 100%,
+                0% 100%);
+    }
+}
+
+/* Button styles -- you can use #resumeButton or a class name */
+#resumeButton {
+    /* Remove fixed px so you can easily change the size */
+    position: relative;
+    overflow: hidden;
+    /* hides the animated edges */
+    z-index: 1;
+}
+
+/* The animated border effect adapted to thicker percentages */
+#resumeButton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* top, right, bottom, left = 0 */
+    margin: auto;
+
+    background: linear-gradient(120deg,
+    oklch(var(--p)),
+    oklch(var(--a)));
+
+    background-size: 400% 400%;
+    clip-path: polygon(
+        0% 100%,
+        3% 100%,
+        3% 10%,
+        97% 10%,
+        97% 90%,
+        3% 90%,
+        3% 100%,
+        100% 100%,
+        100% 0%,
+        0% 0%
+    );
+
+    animation:
+        gradient 3s ease-in-out infinite,
+        border 1s forwards ease-in-out reverse;
+    z-index: -1;
+    /* ensures the gradient border is behind the text */
+}

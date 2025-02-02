@@ -3,46 +3,40 @@ import React from 'react';
 
 function Contacts() {
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="text-4xl font-bold text-center mb-12">Get in Touch</h2>
+    <div className="container mx-auto px-4 py-12">
+      <h2 className="text-4xl font-bold text-center mb-12">Connect With Me</h2>
       <div className="max-w-md mx-auto">
-        <form className="card p-6 bg-base-100 shadow-xl transform hover:scale-105 transition-transform duration-300">
-          <div className="form-control mb-4">
-            <label className="label">
-              <span className="label-text">Your Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Name"
-              className="input input-bordered focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+        <div className="card p-8 bg-base-100 shadow-xl">
+          <div className="space-y-6">
+            <a
+              href="https://linkedin.com/in/YOUR_LINKEDIN"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-block btn-primary hover:btn-secondary transition-colors flex items-center justify-center gap-2"
+            >
+              <i className="fab fa-linkedin text-xl"></i>
+              LinkedIn
+            </a>
+            
+            <a
+              href="https://github.com/YOUR_GITHUB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-block btn-primary hover:btn-secondary transition-colors flex items-center justify-center gap-2"
+            >
+              <i className="fab fa-github text-xl"></i>
+              GitHub
+            </a>
+            
+            <a
+              href="mailto:your.email@example.com"
+              className="btn btn-block btn-primary hover:btn-secondary transition-colors flex items-center justify-center gap-2"
+            >
+              <i className="fas fa-envelope text-xl"></i>
+              Email Me
+            </a>
           </div>
-          <div className="form-control mb-4">
-            <label className="label">
-              <span className="label-text">Your Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="Email"
-              className="input input-bordered focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-          <div className="form-control mb-4">
-            <label className="label">
-              <span className="label-text">Message</span>
-            </label>
-            <textarea
-              placeholder="Your message"
-              className="textarea textarea-bordered focus:outline-none focus:ring-2 focus:ring-primary"
-              rows="4"
-            ></textarea>
-          </div>
-          <div className="form-control">
-            <button className="btn btn-primary hover:btn-secondary transition-colors">
-              Send Message
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

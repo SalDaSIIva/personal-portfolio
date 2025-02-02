@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import MenuIcon from "./icons/MenuIcon";
-import ThemeToggle from "./ThemeToggle";
 import ResumeButton from "./ResumeButton";
-import { Link, Element, scroller } from 'react-scroll';
+import facelessPortrait from "../assets/facelessPortrait.png";
+import DarkModeToggle from "./DarkModeToggle.jsx";
 
 function Navbar({ sections }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +25,6 @@ function Navbar({ sections }) {
 
   const scrollToRef = (ref, offset) => {
     const top = ref.current.getBoundingClientRect().top + window.pageYOffset;
-    const height = ref.current.getBoundingClientRect().height;
     window.scrollTo({
       top: top - offset,
       behavior: 'smooth',
@@ -34,48 +32,60 @@ function Navbar({ sections }) {
   };
 
   return (
-    <div id="myNavBar" className="navbar fixed z-50 bg-base-200">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div 
-            tabIndex={0} 
-            role="button" 
-            className="btn btn-ghost lg:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <MenuIcon />
-          </div>
-          <ul
-            tabIndex={0}
-            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 p-2 shadow ${
-              isOpen ? '' : 'hidden'
-            }`}
-          >
-            {tabs}
-          </ul>
-        </div>
-
+    <div id="myNavBar" className="navbar fixed z-50 bg-base-200/80 backdrop-blur-sm border-b border-base-300/50">
+      {/* Left side */}
+      <div className="navbar-start flex items-center">
         <a className="btn btn-ghost text-xl text-primary group relative hover:bg-transparent hover:border-transparent max-w-[40%] truncate">
           <a href={`#home`}
             onClick={(e) => handleScroll(sections.find(section => section.id === 'home').ref, e)}
-            className="transition-all duration-300 drop-shadow-none group-hover:drop-shadow-[0_0_10px_currentColor] truncate">
-            <span className="hidden md:inline">Alexandre Silva</span>
-            <span className="md:hidden">A.S.</span>
+            className="">
+            <img src={facelessPortrait} alt="author faceless portrait" className="w-10 h-10" />
           </a>
         </a>
+        <ResumeButton />
+      </div>
 
+      {/* Right side */}
+      <div className="navbar-end flex items-center">
+        {/* Desktop Navbar */}
         <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal">
             {tabs}
           </ul>
         </div>
+
+        <DarkModeToggle />
+
+        {/* Mobile Menu Button */}
+        <button
+          className="btn btn-ghost lg:hidden p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 h-6 relative">
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+              isOpen ? 'rotate-45 top-2.5' : 'top-1'
+            }`}></span>
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+              isOpen ? 'opacity-0 top-2.5' : 'top-2.5'
+            }`}></span>
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+              isOpen ? '-rotate-45 top-2.5' : 'top-4'
+            }`}></span>
+          </div>
+        </button>
       </div>
 
-      <div className="navbar-end">
-        <ResumeButton />
-        <ThemeToggle />
+      {/* Mobile Menu Dropdown */}
+      <div className={`absolute top-full left-0 right-0 bg-base-200/80 backdrop-blur-sm border-b border-base-300/50 transform transition-all duration-300 ease-in-out ${
+        isOpen 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 -translate-y-2 pointer-events-none'
+      }`}>
+        <ul className="menu menu-vertical p-4 gap-2">
+          {tabs}
+        </ul>
       </div>
-
     </div>
   );
 }

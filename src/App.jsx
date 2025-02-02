@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contacts from "./pages/Contacts";
+import Portrait from "./components/Portrait";
+
 
 function App() {
 
@@ -35,6 +37,9 @@ function App() {
         <section id="contacts" className="min-h-screen pt-4" ref={contactsRef}>
           <Contacts />
         </section>
+
+        <Portrait />
+
 
         <Footer />
       </div>
