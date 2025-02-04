@@ -2,9 +2,9 @@ import React from "react";
 import Hero from "../components/Hero";
 
 
-function Home() {
+function Home({ sections, scrollToRef }) {
   return (
-      <Hero />
+    <Hero sections={sections} scrollToRef={scrollToRef} />
   );
 }
 

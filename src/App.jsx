@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contacts from "./pages/Contacts";
-import Portrait from "./components/Portrait";
 
 
 function App() {
@@ -20,14 +19,23 @@ function App() {
     { id: 'contacts', label: 'Contacts', ref: contactsRef },
   ];
 
+  const scrollToRef = (ref, offset) => {
+    console.log("ref", ref);
+    console.log("offset", offset);
+    const top = ref.current.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({
+      top: top - offset,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <>
       <div className="scroll-smooth">
-        <Navbar sections={sections} />
+        <Navbar sections={sections} scrollToRef={scrollToRef} />
 
         <section id="home" className="min-h-screen pt-4" ref={homeRef}>
-          <Home />
+          <Home sections={sections} scrollToRef={scrollToRef} />
         </section>
 
         <section id="projects" className="min-h-screen pt-4" ref={projectsRef}>
@@ -37,9 +45,6 @@ function App() {
         <section id="contacts" className="min-h-screen pt-4" ref={contactsRef}>
           <Contacts />
         </section>
-
-        <Portrait />
-
 
         <Footer />
       </div>

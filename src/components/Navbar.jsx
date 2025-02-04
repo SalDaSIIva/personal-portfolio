@@ -3,14 +3,14 @@ import ResumeButton from "./ResumeButton";
 import facelessPortrait from "../assets/facelessPortrait.png";
 import DarkModeToggle from "./DarkModeToggle.jsx";
 
-function Navbar({ sections }) {
+function Navbar({ sections, scrollToRef }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const tabs = sections
     .filter(section => section.id !== "home")
     .map(section => (
       <li key={section.id}>
-        <div href={`#${section.id}`} onClick={(e) => handleScroll(section.ref, e)} className="hover:font-bold hover:text-accent">
+        <div href={`#${section.id}`} onClick={(e) => handleScroll(section.ref, e)} className="block w-full hover:font-bold hover:text-accent">
           {section.label}
         </div>
       </li>
@@ -21,14 +21,6 @@ function Navbar({ sections }) {
     setIsOpen(false);
     const navbarHeight = document.getElementById('myNavBar')?.offsetHeight || 0;
     scrollToRef(ref, navbarHeight);
-  };
-
-  const scrollToRef = (ref, offset) => {
-    const top = ref.current.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({
-      top: top - offset,
-      behavior: 'smooth',
-    });
   };
 
   return (
@@ -47,6 +39,17 @@ function Navbar({ sections }) {
 
       {/* Right side */}
       <div className="navbar-end flex items-center">
+
+        {/* Mobile Menu Dropdown */}
+        <div className={`absolute top-full left-0 right-0 bg-base-200/80 backdrop-blur-sm border-b border-base-300/50 transform transition-all duration-300 ease-in-out ${isOpen
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-2 pointer-events-none'
+          }`}>
+          <ul className="menu menu-vertical p-4 gap-2">
+            {tabs}
+          </ul>
+        </div>
+
         {/* Desktop Navbar */}
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal">
@@ -63,29 +66,17 @@ function Navbar({ sections }) {
           aria-label="Toggle menu"
         >
           <div className="w-6 h-6 relative">
-            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-              isOpen ? 'rotate-45 top-2.5' : 'top-1'
-            }`}></span>
-            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-              isOpen ? 'opacity-0 top-2.5' : 'top-2.5'
-            }`}></span>
-            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-              isOpen ? '-rotate-45 top-2.5' : 'top-4'
-            }`}></span>
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 top-2.5' : 'top-1'
+              }`}></span>
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0 top-2.5' : 'top-2.5'
+              }`}></span>
+            <span className={`absolute inset-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isOpen ? '-rotate-45 top-2.5' : 'top-4'
+              }`}></span>
           </div>
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <div className={`absolute top-full left-0 right-0 bg-base-200/80 backdrop-blur-sm border-b border-base-300/50 transform transition-all duration-300 ease-in-out ${
-        isOpen 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 -translate-y-2 pointer-events-none'
-      }`}>
-        <ul className="menu menu-vertical p-4 gap-2">
-          {tabs}
-        </ul>
-      </div>
+
     </div>
   );
 }

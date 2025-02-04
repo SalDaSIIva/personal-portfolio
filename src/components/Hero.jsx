@@ -1,107 +1,16 @@
-/*
-import React from "react";
-import ScrollDownIndicator from "../components/ScrollDownIndicator";
-import TypingEffect from "../components/TypingEffect";
-
-
-function Hero() {
-    return (
-        <>
-            <div className="hero min-h-screen">
-                <div className="hero-content text-center md:text-left flex flex-col md:flex-row md:justify-between max-w-6xl mx-auto">
-                    <div className="md:w-1/2">
-                        <h2 className="text-3xl font-display font-bold leading-tight">Hi!</h2>
-                        <h2 className="text-3xl font-display font-bold leading-tight">My Friends Call Me</h2>
-                        <h2 className="text-6xl font-display font-bold leading-tight text-primary mb-4">Alex,</h2>
-
-                        <TypingEffect
-                            strings={[
-                                "a Full-Stack Developer", "a Gamer", "a Web 3.0 Enthusiast", "Addicted to Learning", "an Enduro Rider",
-                            ]}
-                        />
-
-                    </div>
-
-
-
-                    <div className="md:w-1/2 mt-8 md:mt-0">
-                        <div className="relative">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent blur opacity-30 rounded-full"></div>
-                            <img
-                                src="selfie.jpg"
-                                alt="Alexandre Silva"
-                                className="relative rounded-full w-64 h-64 object-cover mx-auto border-4 border-base-100"
-                            />
-                        </div>
-                    </div>
-            <ScrollDownIndicator />
-                    
-                </div>
-
-            </div>
-
-        </>
-    );
-}
-
-export default Hero;
-
-
-
-
-
-*/
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import facelessPortrait from '../assets/facelessPortrait.png';
+import TypingEffect from './TypingEffect';
 
 
-const TypingEffect = ({ phrases }) => {
-    const [currentPhrase, setCurrentPhrase] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-
-    useEffect(() => {
-        const targetPhrase = phrases[currentIndex];
-        const typingSpeed = isDeleting ? 50 : 100;
-        const pauseDuration = 2000;
-
-        const timeout = setTimeout(() => {
-            if (!isDeleting) {
-                if (currentPhrase !== targetPhrase) {
-                    setCurrentPhrase(targetPhrase.substring(0, currentPhrase.length + 1));
-                } else {
-                    setTimeout(() => setIsDeleting(true), pauseDuration);
-                }
-            } else {
-                if (currentPhrase === '') {
-                    setIsDeleting(false);
-                    setCurrentIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-                } else {
-                    setCurrentPhrase(currentPhrase.substring(0, currentPhrase.length - 1));
-                }
-            }
-        }, typingSpeed);
-
-        return () => clearTimeout(timeout);
-    }, [currentPhrase, currentIndex, isDeleting, phrases]);
-
-    return (
-        <span className="text-xl md:text-2xl text-gray-300">
-            {currentPhrase}
-            <span className="animate-pulse">|</span>
-        </span>
-    );
-};
-
-const Hero = () => {
+const Hero = ({ sections, scrollToRef }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
 
     const phrases = [
-        "a JuniorFull-Stack Developer",
+        "a Junior Full-Stack Developer",
         "a Gamer",
         "a Web 3.0 Enthusiast",
         "addicted to Learning",
@@ -109,10 +18,12 @@ const Hero = () => {
     ];
 
     const handleScrollToProjects = () => {
-        document.getElementById('projects').scrollIntoView({ 
-            behavior: 'smooth'
-        });
+        const projectsRef = sections
+            .filter(section => section.id === "projects")[0].ref;
+        const navbarHeight = document.getElementById('myNavBar')?.offsetHeight || 0;
+        scrollToRef(projectsRef, navbarHeight);
     };
+
 
     useEffect(() => {
         setIsVisible(true);
@@ -138,7 +49,6 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{
                         opacity: isVisible ? 1 : 0,
-                        y: 0,
                         x: mousePosition.x,
                         y: mousePosition.y
                     }}
@@ -171,9 +81,6 @@ const Hero = () => {
                         and I'm
                     </h1>
                     <div className="h-16 flex items-center justify-center">
-
-
-
                         <span className="text-xl md:text-2xl text-gray-300 mr-2"> </span>
                         <TypingEffect phrases={phrases} />
                     </div>
