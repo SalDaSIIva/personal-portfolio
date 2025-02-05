@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 function ResumeModal({ isOpen, onClose }) {
-  const resumePdfUrl = "/resume.pdf";
+  const resumePdfUrl = `${process.env.PUBLIC_URL}/resume.pdf`;
 
   if (!isOpen) return null;
 
