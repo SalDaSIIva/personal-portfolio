@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contacts from "./pages/Contacts";
+import BackgroundFlow from "./components/BackgroundFlow";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
 
   return (
     <>
+      <BackgroundFlow />
+
       <div className="scroll-smooth">
         <Navbar sections={sections} scrollToRef={scrollToRef} />
 

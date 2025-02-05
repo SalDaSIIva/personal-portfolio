@@ -1,16 +1,18 @@
 import React from 'react';
+import tbd from '../assets/tbd.jpg';
 
 function ProjectCard({ project }) {
 
     return (
-        <div className="card bg-base-100 shadow-2xl w-96 transform hover:scale-110 active:scale-95 transition-all duration-300">
+        <div className="card bg-base-100/70 shadow-2xl w-96 transform hover:scale-110 active:scale-95 transition-all duration-300">
 
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    src={tbd}
                     alt="Shoes"
                     className="object-contain w-full h-auto"
                 />
+
 
             </figure>
 
@@ -25,7 +27,7 @@ function ProjectCard({ project }) {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-primary hover:btn-secondary transition-all duration-300"
+                        className="btn btn-primary hover:btn-primary-focus transition-all duration-300"
                     >
                         GitHub
                     </a>
@@ -34,7 +36,7 @@ function ProjectCard({ project }) {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-secondary hover:btn-primary transition-all duration-300"
+                        className="btn btn-secondary hover:btn-secondary-focus transition-all duration-300"
                     >
                         Live Demo
                     </a>

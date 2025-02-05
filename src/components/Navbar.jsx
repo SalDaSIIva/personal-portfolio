@@ -27,13 +27,13 @@ function Navbar({ sections, scrollToRef }) {
     <div id="myNavBar" className="navbar fixed z-50 bg-base-200/80 backdrop-blur-sm border-b border-base-300/50">
       {/* Left side */}
       <div className="navbar-start flex items-center">
-        <a className="btn btn-ghost text-xl text-primary group relative hover:bg-transparent hover:border-transparent max-w-[40%] truncate">
+        <div className="btn btn-ghost text-xl text-primary group relative hover:bg-transparent hover:border-transparent max-w-[40%] truncate">
           <a href={`#home`}
             onClick={(e) => handleScroll(sections.find(section => section.id === 'home').ref, e)}
             className="">
             <img src={facelessPortrait} alt="author faceless portrait" className="w-10 h-10" />
           </a>
-        </a>
+        </div>
         <ResumeButton />
       </div>
 

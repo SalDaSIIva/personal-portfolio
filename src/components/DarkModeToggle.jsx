@@ -4,7 +4,7 @@ function DarkModeToggle() {
     return (
         <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" className="theme-controller" value="synthwave" />
+            <input type="checkbox" className="theme-controller" value="emerald" />
 
             {/* sun icon */}
             <svg

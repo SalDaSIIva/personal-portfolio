@@ -3,19 +3,14 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import facelessPortrait from '../assets/facelessPortrait.png';
 import TypingEffect from './TypingEffect';
+import phrases from '../data/heroPhrases';
 
 
 const Hero = ({ sections, scrollToRef }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
 
-    const phrases = [
-        "a Junior Full-Stack Developer",
-        "a Gamer",
-        "a Web 3.0 Enthusiast",
-        "addicted to Learning",
-        "an Enduro Rider"
-    ];
+
 
     const handleScrollToProjects = () => {
         const projectsRef = sections

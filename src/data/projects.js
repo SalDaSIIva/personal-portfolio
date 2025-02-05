@@ -1,22 +1,24 @@
 const projects = [
   {
     title: 'Project One',
-    description: 'A brief description for Project One. This project showcases a cool feature with interactive design.',
-    github: 'https://github.com/username/project-one',
-    demo: 'https://project-one-demo.com',
+    description: 'Details for this project will be available soon. Stay tuned for updates on my latest work and achievements.',
+    github: 'https://github.com/SalDaSIIva',
+    demo: 'https://github.com/SalDaSIIva',
   },
+
   {
     title: 'Project Two',
-    description: 'A brief description for Project Two. It includes innovative design and fun animations.',
-    github: 'https://github.com/username/project-two',
-    demo: 'https://project-two-demo.com',
+    description: 'This project is currently being finalized and will be disclosed at a later date. Thank you for your interest in my work.',
+    github: 'https://github.com/SalDaSIIva',
+    demo: 'https://github.com/SalDaSIIva',
   },
   {
     title: 'Project Three',
-    description: 'A brief description for Project Three. Experience the sleek UI with smooth transitions.',
-    github: 'https://github.com/username/project-three',
-    demo: 'https://project-three-demo.com',
+    description: 'More information about this project will be shared in the near future.',
+    github: 'https://github.com/SalDaSIIva',
+    demo: 'https://github.com/SalDaSIIva',
   },
 ];
+
 
 export default projects;

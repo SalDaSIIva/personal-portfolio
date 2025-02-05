@@ -15,7 +15,7 @@ function ResumeModal({ isOpen, onClose }) {
       <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300" />
       
       <div 
-        className="relative bg-base-100 p-6 rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col"
+        className="relative bg-base-100/70 p-6 rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-4">

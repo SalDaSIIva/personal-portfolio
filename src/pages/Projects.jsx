@@ -7,6 +7,8 @@ import ProjectCard from "../components/ProjectCard";
 function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const nextCardTimer = 5000; // milliseconds
+
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -24,7 +26,8 @@ function Projects() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
-    }, 3500);
+    }, nextCardTimer);
+
 
     return () => clearInterval(interval);
   }, [activeIndex]);
