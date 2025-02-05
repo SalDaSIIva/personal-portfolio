@@ -90,6 +90,9 @@
     overflow: hidden;
     /* hides the animated edges */
     z-index: 1;
+    
+    /* fixes clipping white shadow from the left */
+    background: transparent !important;
 }
 
 /* The animated border effect adapted to thicker percentages */
