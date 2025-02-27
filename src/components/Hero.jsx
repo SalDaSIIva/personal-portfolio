@@ -34,6 +34,20 @@ const Hero = ({ sections, scrollToRef }) => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
+    // Define jiggle animation variants
+    const jiggleVariants = {
+        animate: {
+            rotate: [0, 2, 0, -2, 0],
+            y: [0, -4, 0, 4, 0],
+            transition: {
+                duration: 5,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror"
+            }
+        }
+    };
+
     return (
         <div className="relative h-screen overflow-hidden">
 
@@ -47,6 +61,8 @@ const Hero = ({ sections, scrollToRef }) => {
                         x: mousePosition.x,
                         y: mousePosition.y
                     }}
+                    variants={jiggleVariants}
+                    whileInView="animate"
                     transition={{ duration: 0.8 }}
                     className="mb-8 relative"
                 >
