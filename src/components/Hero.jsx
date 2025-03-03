@@ -67,7 +67,7 @@ const Hero = ({ sections, scrollToRef }) => {
                     className="mb-8 relative"
                 >
                     {/* Drop shadow container */}
-                    <div className="relative w-48 h-48 md:w-64 md:h-64 filter drop-shadow-2xl">
+                    <div className="relative w-48 h-48 md:w-64 md:h-64 filter drop-shadow-2xl portrait-hover">
                         {/* Main portrait */}
                         <img
                             src={facelessPortrait}

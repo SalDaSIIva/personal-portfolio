@@ -1,22 +1,25 @@
 const projects = [
   {
-    title: 'Project One',
-    description: 'Details for this project will be available soon. Stay tuned for updates on my latest work and achievements.',
+    title: 'AI-Powered Interior Remodeling',
+    description: 'Enabling users to visualize AI-generated interior redesigns and receive smart product recommendations.',
     github: 'https://github.com/SalDaSIIva',
     demo: 'https://github.com/SalDaSIIva',
+    image: 'interior-remodeling.jpg',
   },
 
   {
-    title: 'Project Two',
-    description: 'This project is currently being finalized and will be disclosed at a later date. Thank you for your interest in my work.',
+    title: 'AI-Powered Accounting and Tax Assistant',
+    description: 'Leveraging regulations and documentations to empower users with AI-driven insights on tax, accounting, and compliance.',
     github: 'https://github.com/SalDaSIIva',
     demo: 'https://github.com/SalDaSIIva',
+    image: 'accounting-assistant.jpg',
   },
   {
-    title: 'Project Three',
+    title: 'DoGo',
     description: 'More information about this project will be shared in the near future.',
     github: 'https://github.com/SalDaSIIva',
     demo: 'https://github.com/SalDaSIIva',
+    image: 'dogo.jpg',
   },
 ];
 

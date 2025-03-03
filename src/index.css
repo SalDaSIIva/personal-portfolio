@@ -24,6 +24,10 @@
 }
 
 body {
+    cursor: default;
+}
+
+.portrait-hover {
     cursor: url('/cursor-32x32.png') 16 16, auto;
 }
 
