@@ -3,7 +3,7 @@ const projects = [
     title: 'AI-Powered Interior Remodeling',
     description: 'Enabling users to visualize AI-generated interior redesigns and receive smart product recommendations.',
     github: 'https://github.com/SalDaSIIva',
-    demo: 'https://github.com/SalDaSIIva',
+    demo: 'https://inspiring-blini-9b4983.netlify.app/',
     image: 'interior-remodeling.jpg',
   },
 
